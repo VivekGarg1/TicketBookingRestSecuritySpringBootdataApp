@@ -1,5 +1,7 @@
 package com.home.book.ticket.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +31,8 @@ public class TicketBookingController {
 	public Ticket getTicketById(@PathVariable("ticketId")Integer ticketId){
 		return ticketBookingService.getTicketById(ticketId);
 	}
-	@GetMapping(value="/tickets/alltickets")
-	public Iterable<Ticket> getAllBookedTickets(){
+	@GetMapping(value="/admin/alltickets")
+	public List<Ticket> getAllBookedTickets(){
 		return ticketBookingService.getAllBookedTickets();
 	}
 	

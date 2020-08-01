@@ -1,5 +1,7 @@
 package com.home.book.ticket.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +20,14 @@ public class TicketBookingService {
 	public Ticket getTicketById(Integer ticketId) {
 		return ticketBookingDao.findOne(ticketId);
 	}
-	public Iterable<Ticket> getAllBookedTickets() {
+	public List<Ticket> getAllBookedTickets() {
 		return ticketBookingDao.findAll();
 	}
 	public void deleteTicket(Integer ticketId) {
 		ticketBookingDao.delete(ticketId);
 	}
 	public Ticket updateTicket(Integer ticketId, String newEmail) {
-		Ticket ticketFromDb = ticketBookingDao.findOne(ticketId);
+		Ticket ticketFromDb = ticketBookingDao.getOne(ticketId);
 		ticketFromDb.setEmail(newEmail);
 		Ticket upadedTicket = ticketBookingDao.save(ticketFromDb);
 		return upadedTicket;
